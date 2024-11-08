@@ -1,12 +1,10 @@
 use std::{collections::HashMap, fs::File, io::Read, mem, path::Path, str::FromStr};
-use anyhow::{anyhow, Ok, Result};
+use anyhow::{anyhow, Result};
 use borsh::{BorshDeserialize, BorshSerialize};
 use rayon::iter::{IntoParallelRefIterator, ParallelIterator};
 use solana_sdk::{pubkey::Pubkey, hash::hash};
-use convert_case::{Case, Casing};
 
 use anchor_lang::anchor_syn::idl::types::{Idl, IdlField, IdlType, IdlTypeDefinition, IdlTypeDefinitionTy::Struct};
-
 
 pub type Discriminator = [u8;8];
 pub type DiscriminatorMap = HashMap<[u8;8], IdlTypeDefinition>;

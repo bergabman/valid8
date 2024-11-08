@@ -8,7 +8,8 @@ use crate::context::Valid8Context;
 use super::{AccountSchema, Network, project_name::ProjectName};
 
 pub fn find_idl_address(pubkey: &Pubkey) -> Result<Pubkey> {
-    Ok(IdlAccount::address(pubkey))
+    let signer = Pubkey::find_program_address(&[], pubkey).0;
+    Ok(Pubkey::create_with_seed(&signer, IdlAccount::seed(), pubkey)?)
 }
 
 pub fn fetch_idl_schema(network: &Network, pubkey: &Pubkey) -> Result<Vec<u8>> {

@@ -7,7 +7,6 @@ use std::{
 };
 use anyhow::Result;
 use dialoguer::{Input, Select};
-use rayon::iter::SkipAnyWhile;
 use serde::{Serialize, Deserialize};
 use anyhow::anyhow;
 use serde_json::Value;
